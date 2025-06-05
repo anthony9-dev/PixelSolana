@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PixelTycoon</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>PixelTycoon</h1>
+
+  <div id="login-container" class="visible">
+    <input type="text" id="username" placeholder="Nom d'utilisateur" />
+    <input type="password" id="password" placeholder="Mot de passe" />
+    <button onclick="login()">Connexion</button>
+  </div>
+
+  <div id="game-container">
+    <div id="pixel-counter">Pixels : 0</div>
+    <div>Production/sec : <span id="pps">0</span></div>
+    <button id="click-button">+1 Pixel</button>
+
+    <h2>Améliorations</h2>
+    <button class="upgrade" onclick="buyUpgrade(0)">Pixelateur (+1/s) - 10 Pixels</button>
+    <button class="upgrade" onclick="buyUpgrade(1)">Usine à Pixels (+5/s) - 100 Pixels</button>
+    <button class="upgrade" onclick="buyUpgrade(2)">Générateur 3000 (+20/s) - 1000 Pixels</button>
+  </div>
+
+  <script src="auth.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
