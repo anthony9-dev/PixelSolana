@@ -3,7 +3,7 @@
 // Utilisateurs autorisés
 const users = {
   "joueur": "motdepasse",
-  "admin": "admin123"
+
 };
 
 let currentUser = null;
