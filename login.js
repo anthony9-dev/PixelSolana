@@ -1,5 +1,3 @@
-// login.js
-
 const users = {
   "joueur": "motdepasse",
   "admin": "admin123"
@@ -49,7 +47,7 @@ function login() {
       saveGame();
     }, 1000);
 
-    document.getElementById('click-button').onclick = () => {
+    document.getElementById('click-button').addEventListener('click', () => {
       pixels++;
       const pixelCounter = document.getElementById('pixel-counter');
       pixelCounter.style.transform = 'scale(1.2)';
@@ -58,12 +56,14 @@ function login() {
       }, 100);
       updateDisplay();
       saveGame();
-    };
+    });
 
   } else {
     alert('Identifiants incorrects');
   }
 }
 
-// Afficher le formulaire de connexion au chargement
-showContainer('login-container');
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("login-button").addEventListener("click", login);
+  showContainer("login-container");
+});
