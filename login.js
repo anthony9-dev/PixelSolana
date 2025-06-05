@@ -10,16 +10,9 @@ let pixels = 0;
 let pps = 0;
 let saveInterval = null;
 
-function showContainer(idToShow) {
-  const containers = ['login-container', 'game-container'];
-  containers.forEach(id => {
-    const el = document.getElementById(id);
-    if(id === idToShow) {
-      el.style.display = 'block';
-    } else {
-      el.style.display = 'none';
-    }
-  });
+function showContainer(id) {
+  document.getElementById('login-container').style.display = id === 'login-container' ? 'block' : 'none';
+  document.getElementById('game-container').style.display = id === 'game-container' ? 'block' : 'none';
 }
 
 function updateDisplay() {
@@ -56,8 +49,7 @@ function login() {
       saveGame();
     }, 1000);
 
-    const clickButton = document.getElementById('click-button');
-    clickButton.onclick = () => {
+    document.getElementById('click-button').onclick = () => {
       pixels++;
       const pixelCounter = document.getElementById('pixel-counter');
       pixelCounter.style.transform = 'scale(1.2)';
@@ -68,14 +60,10 @@ function login() {
       saveGame();
     };
 
-    // Appelle drawMap si disponibl (pour dessiner la map)
-    if (typeof drawMap === 'function') {
-      drawMap();
-    }
   } else {
     alert('Identifiants incorrects');
   }
 }
 
-// Au chargement, afficher le login
+// Afficher le formulaire de connexion au chargement
 showContainer('login-container');
