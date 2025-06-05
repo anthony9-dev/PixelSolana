@@ -67,7 +67,7 @@ canvas.addEventListener('click', (event) => {
   const tile = map[y][x];
   
   if(tile === 0) {
-    alert("Case vide : tu peux construire ici !");
+    alert("Case vide : tu peux construir ici !");
   } else {
     alert(`Bâtiment niveau ${tile} à cette position.`);
   }
