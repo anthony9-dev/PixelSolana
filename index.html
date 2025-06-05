@@ -16,16 +16,17 @@
   </div>
 
   <div id="game-container" class="hidden">
-    <canvas id="game-canvas" width="320" height="320" style="border:1px solid #444;"></canvas>
+    <div id="pixel-display">Pixels : <span id="pixel-counter">0</span></div>
+    
+    <canvas id="game-canvas" width="320" height="320"></canvas>
 
-    <div id="pixel-counter">Pixels : 0</div>
-    <div>Production/sec : <span id="pps">0</span></div>
-    <button id="click-button">+1 Pixel</button>
+    <div id="info-container">
+      <div>Production/sec : <span id="pps">0</span></div>
+      <button id="click-button">+1 Pixel</button>
+    </div>
 
-    <h2>Améliorations</h2>
-    <button class="upgrade" onclick="buyUpgrade(0)">Pixelateur (+1/s) - 10 Pixels</button>
-    <button class="upgrade" onclick="buyUpgrade(1)">Usine à Pixels (+5/s) - 100 Pixels</button>
-    <button class="upgrade" onclick="buyUpgrade(2)">Générateur 3000 (+20/s) - 1000 Pixels</button>
+    <h2>Améliorations des bâtiments</h2>
+    <p>Clique sur un bâtiment pour l'améliorer (coût : 50 pixels)</p>
   </div>
 
   <script src="login.js" defer></script>
