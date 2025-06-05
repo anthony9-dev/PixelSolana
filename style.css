@@ -1,88 +1,52 @@
-/* Style général */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0; /* Fond clair pour éviter l'écran noir */
-  color: #222222; /* Texte sombre, bien visible */
+  background-color: #1f1f1f;
+  color: #fff;
   text-align: center;
   padding: 20px;
-  margin: 0;
-  min-height: 100vh;
 }
 
-/* Conteneurs login et jeu */
-#login-container, #game-container {
+.hidden {
   display: none;
-  max-width: 400px;
-  margin: 30px auto;
-  background-color: #090000;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.15);
-  padding: 25px 20px;
 }
 
-#login-container, #game-container {
-  display: none;
-}
 .visible {
   display: block;
 }
 
-/* Titres */
-h1, h2 {
-  color: #333333;
-}
-
-/* Texte compteur */
 #pixel-counter {
   font-size: 2rem;
   margin-bottom: 20px;
   transition: transform 0.2s ease;
-  color: #007bff; /* Bleu vif pour attirer l’œil */
 }
 
-/* Boutons */
 button {
-  padding: 12px 24px;
-  margin: 10px 5px;
+  padding: 10px 20px;
+  margin: 10px;
   font-size: 1rem;
   cursor: pointer;
   border: none;
   border-radius: 8px;
-  background-color: #007bff;
-  color: rgb(0, 0, 0);
-  box-shadow: 0 4px 8px rgba(0,123,255,0.3);
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  background-color: #444;
+  color: white;
+  transition: background 0.3s, transform 0.2s;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #666;
   transform: scale(1.05);
 }
 
 .upgrade {
   display: block;
-  width: 90%;
-  max-width: 300px;
-  margin: 15px auto;
+  margin: 10px auto;
 }
 
-/* Champs de formulaire */
-input[type="text"],
-input[type="password"] {
-  width: 90%;
-  max-width: 300px;
-  padding: 12px;
+input {
+  padding: 10px;
   font-size: 1rem;
-  margin: 10px 0;
-  border-radius: 6px;
-  border: 1.5px solid #000000;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease;
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 8px rgba(0,123,255,0.5);
+  margin: 10px;
+  border-radius: 5px;
+  border: none;
+  width: 200px;
 }
