@@ -68,7 +68,7 @@ function login() {
       saveGame();
     };
 
-    // Appelle drawMap si disponible (pour dessiner la map)
+    // Appelle drawMap si disponibl (pour dessiner la map)
     if (typeof drawMap === 'function') {
       drawMap();
     }
