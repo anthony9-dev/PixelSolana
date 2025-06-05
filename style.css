@@ -1,9 +1,11 @@
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #4A90E2, #1f1f1f);
+  background: linear-gradient(to bottom, #4A90E2, #90ee90);
   color: white;
   text-align: center;
   padding: 20px;
+  margin: 0;
+  overflow: hidden;
 }
 
 #pixel-counter {
@@ -15,6 +17,15 @@ body {
   background: rgba(0,0,0,0.5);
   padding: 10px;
   border-radius: 5px;
+}
+
+#game-canvas {
+  display: block;
+  margin: 0 auto;
+  border: 2px solid #444;
+  background-color: #90ee90;
+  width: 100vw;
+  height: 80vh;
 }
 
 button {
@@ -36,6 +47,4 @@ button:hover {
 canvas {
   display: block;
   margin: 20px auto;
-  border: 2px solid #444;
-  background-color: #90ee90;
 }

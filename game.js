@@ -2,26 +2,14 @@ let pixels = 0;
 let pps = 0;
 let gameInterval = null;
 
-const tileSize = 32; 
+const tileSize = 64;
 const mapWidth = 10;
 const mapHeight = 10;
+let buildings = 0;
 
-// 0 = vide, 1 = bâtiment niveau 1, 2 = bâtiment niveau 2, 3 = bâtiment niveau 3
-let map = [
-  [0,0,0,0,0,0,0,0,0,0],
-  [0,1,0,0,0,0,0,2,0,0],
-  [0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,3,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0],
-];
+let map = Array.from({ length: mapHeight }, () => Array(mapWidth).fill(0));
 
 const images = {
-  0: null,
   1: new Image(),
   2: new Image(),
   3: new Image()
@@ -36,20 +24,18 @@ const ctx = canvas.getContext('2d');
 
 function drawMap() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = '#87CEEB'; // Fond bleu ciel
+  
+  ctx.fillStyle = '#90ee90'; // Fond plein écran
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   
-  for(let y=0; y < mapHeight; y++) {
-    for(let x=0; x < mapWidth; x++) {
+  for (let y = 0; y < mapHeight; y++) {
+    for (let x = 0; x < mapWidth; x++) {
       const tile = map[y][x];
-      
-      ctx.fillStyle = '#90ee90'; // Terrain vert
-      ctx.fillRect(x * tileSize, y * tileSize, tileSize, tileSize);
-      
-      if(tile !== 0 && images[tile].complete) {
+
+      if (tile !== 0 && images[tile].complete) {
         ctx.drawImage(images[tile], x * tileSize, y * tileSize, tileSize, tileSize);
       }
-      
+
       ctx.strokeStyle = '#333';
       ctx.strokeRect(x * tileSize, y * tileSize, tileSize, tileSize);
     }
@@ -64,33 +50,46 @@ canvas.addEventListener('click', (event) => {
   const rect = canvas.getBoundingClientRect();
   const x = Math.floor((event.clientX - rect.left) / tileSize);
   const y = Math.floor((event.clientY - rect.top) / tileSize);
-  
-  const tile = map[y][x];
-  
-  if(tile >= 1 && tile < 3 && pixels >= 50) {
+
+  if (map[y][x] >= 1 && map[y][x] < 3 && pixels >= 50) {
     pixels -= 50;
     map[y][x]++;
     drawMap();
-  } else if(tile === 3) {
-    alert("Ce bâtiment est déjà au niveau maximum !");
-  } else {
-    alert("Case vide : tu peux construire ici !");
+  } else if (map[y][x] === 3) {
+    alert("Ce bâtiment est au niveau maximum !");
   }
 });
 
-function updateDisplay() {
-  document.getElementById('pixel-counter').textContent = `Pixels : ${pixels}`;
-  document.getElementById('pps').textContent = pps;
-}
-
 document.getElementById('click-button').addEventListener('click', () => {
   pixels++;
-  updateDisplay();
   drawMap();
+});
+
+document.getElementById('buy-building').addEventListener('click', () => {
+  if (pixels >= 100) {
+    pixels -= 100;
+    let placed = false;
+
+    for (let y = 0; y < mapHeight && !placed; y++) {
+      for (let x = 0; x < mapWidth && !placed; x++) {
+        if (map[y][x] === 0) {
+          map[y][x] = 1;
+          placed = true;
+        }
+      }
+    }
+
+    if (!placed) {
+      alert("Plus de place pour un nouveau bâtiment !");
+    } else {
+      drawMap();
+    }
+  } else {
+    alert("Pas assez de pixels !");
+  }
 });
 
 setInterval(() => {
   pixels += pps;
-  updateDisplay();
   drawMap();
 }, 1000);
